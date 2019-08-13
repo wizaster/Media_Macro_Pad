@@ -54,83 +54,61 @@ void loop() {
         digitalWrite(mmpLed, HIGH);
       }
     }
-  if(!digitalRead(mmpLed == HIGH)){
-      if (digitalRead(volDownAltTab) == 0)
+    if (digitalRead(volDownAltTab) == 0)
       {
           Consumer.write(MEDIA_VOLUME_DOWN);
           delay(25);
       }
-      if (digitalRead(volUpCtrlTab) == 0)
+    if (digitalRead(volUpCtrlTab) == 0)
       {
           Consumer.write(MEDIA_VOLUME_UP);
           delay(25);
       }
-        if (!digitalRead(playButtonCtrlA))
-        {
-            Consumer.write(MEDIA_PLAY_PAUSE);
-            delay(300);
-        }
-        if (!digitalRead(nextButtonCtrlV))
-        {
-             Consumer.write(MEDIA_NEXT);
-            delay(300);
-        }
-        if (!digitalRead(prevButtonCtrlC))
-        {
-            Consumer.write(MEDIA_PREVIOUS);
-            delay(300);
-        }
-        if (!digitalRead(switchButtonSnip))
-        {
-            Keyboard.press(KEY_LEFT_ALT);
-            Keyboard.write('a');
-            Keyboard.release(KEY_LEFT_ALT);
-            delay(300);
-        } 
-  }
-  else{//while maybe?
-      if (digitalRead(volDownAltTab) == 0)
-      {
-          Keyboard.press(KEY_LEFT_ALT );
-          Keyboard.press(KEY_TAB);
-          Keyboard.releaseAll();
-          delay(25);
+    if (!digitalRead(playButtonCtrlA)){
+      if(!digitalRead(mmpLed == HIGH)){
+        Consumer.write(MEDIA_PLAY_PAUSE);
+        delay(300);
+      }else{
+        Keyboard.press(KEY_LEFT_CTRL);
+        Keyboard.write('a');
+        Keyboard.releaseAll();
+        delay(300);
       }
-      if (digitalRead(volUpCtrlTab) == 0)
-      {
-          Keyboard.press(KEY_LEFT_CTRL);
-          Keyboard.press(KEY_TAB);
-          Keyboard.releaseAll();
-          delay(25);
+    }
+    if (!digitalRead(nextButtonCtrlV)){
+      if(!digitalRead(mmpLed == HIGH)){
+        Consumer.write(MEDIA_NEXT);
+        delay(300);
+      }else{
+        Keyboard.press(KEY_LEFT_CTRL);
+        Keyboard.write('v');
+        Keyboard.releaseAll();
+        delay(300);
       }
-        if (!digitalRead(playButtonCtrlA))
-        {
-            Keyboard.press(KEY_LEFT_CTRL);
-            Keyboard.write('a');
-            Keyboard.releaseAll();
-            delay(300);
-        }
-        if (!digitalRead(nextButtonCtrlV))
-        {
-            Keyboard.press(KEY_LEFT_CTRL);
-            Keyboard.write('v');
-            Keyboard.releaseAll();
-            delay(300);
-        }
-        if (!digitalRead(prevButtonCtrlC))
-        {
-            Keyboard.press(KEY_LEFT_CTRL);
-            Keyboard.write('c');
-            Keyboard.releaseAll();
-            delay(300);
-        }
-        if (!digitalRead(switchButtonSnip))
-        {
-            Keyboard.press(KEY_LEFT_ALT);
-            Keyboard.press(KEY_LEFT_CTRL);
-            Keyboard.write('/');
-            Keyboard.releaseAll();
-            delay(300);
-        }
-  }
+    }
+    if (!digitalRead(prevButtonCtrlC)){
+      if(!digitalRead(mmpLed == HIGH)){
+          Consumer.write(MEDIA_PREVIOUS);
+          delay(300);
+      }else{
+        Keyboard.press(KEY_LEFT_CTRL);
+        Keyboard.write('c');
+        Keyboard.releaseAll();
+        delay(300);
+      }
+    }
+    if (!digitalRead(switchButtonSnip)){
+      if(!digitalRead(mmpLed == HIGH)){
+          Keyboard.press(KEY_LEFT_ALT);
+          Keyboard.write('a');
+          Keyboard.release(KEY_LEFT_ALT);
+          delay(300);
+      }else{
+        Keyboard.press(KEY_LEFT_ALT);
+        Keyboard.press(KEY_LEFT_CTRL);
+        Keyboard.write('/');
+        Keyboard.releaseAll();
+        delay(300);
+      }
+    }
 }
